@@ -14,7 +14,7 @@ type ArtistService struct {
 	service service.Service
 }
 
-func (f *ArtistService) GetAll(*empty.Empty, stream pb.ArtistService_GetAllServer) error {
+func (f *ArtistService) GetAll(_ *empty.Empty, stream pb.ArtistService_GetAllServer) error {
 	fmt.Println("Inside the function")
 	var artists []*model.Artist
 	artists = append(artists, model.NewArtist())
