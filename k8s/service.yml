@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: track-service
+spec:
+  type: NodePort
+  selector:
+    app: track-service
+  ports:
+    - port: 6565
+      targetPort: grpc
