@@ -3,16 +3,16 @@ package main
 import (
 	"fmt"
 
-	"github.com/PrakharSrivastav/artist-service-grpc/internal"
-	"github.com/PrakharSrivastav/artist-service-grpc/internal/rpc"
+	"github.com/PrakharSrivastav/track-service-grpc/internal"
+	"github.com/PrakharSrivastav/track-service-grpc/internal/rpc"
 )
 
 func main() {
 	app := internal.NewApplication()
 
-	artistService := rpc.New(nil)
+	trackService := rpc.New(nil)
 
-	app.GrpcServer.Add(artistService)
+	app.GrpcServer.Add(trackService)
 	err := app.GrpcServer.Start()
 	if err != nil {
 		fmt.Println(err.Error())
