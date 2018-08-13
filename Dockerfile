@@ -7,7 +7,6 @@ RUN mkdir /go/src/github.com/PrakharSrivastav/track-service-grpc
 COPY . /go/src/github.com/PrakharSrivastav/track-service-grpc
 WORKDIR  /go/src/github.com/PrakharSrivastav/track-service-grpc
 RUN go build -o app
-RUN ls -l /go/src/github.com/PrakharSrivastav/track-service-grpc/
 
 FROM alpine
 RUN mkdir /application
