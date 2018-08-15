@@ -1,6 +1,7 @@
 package rpc
 
 import (
+	"context"
 	"fmt"
 
 	pb "github.com/PrakharSrivastav/gql-grpc-defintions/go/schema"
@@ -73,7 +74,9 @@ func (f *TrackService) GetTrackByArtist(req *pb.SimpleTrackRequest, stream pb.Tr
 	}
 	return nil
 }
-
+func (f *TrackService) Get(_ context.Context, req *pb.SimpleTrackRequest) (*pb.Track, error) {
+	return f.service.Get(req.GetId())
+}
 func (f *TrackService) Register(server *grpc.Server) {
 	pb.RegisterTrackServiceServer(server, f)
 }
