@@ -1,7 +1,6 @@
 package service
 
 import (
-	"context"
 	"fmt"
 
 	pb "github.com/PrakharSrivastav/gql-grpc-defintions/go/schema"
@@ -24,16 +23,44 @@ func (f *impl) Get(id string) (*pb.Track, error) {
 	return track.ToProto(), nil
 }
 
-func (f *impl) GetAll(ctx context.Context) ([]*pb.Track, error) {
-	panic("not implemented")
+func (f *impl) GetAll() ([]*pb.Track, error) {
+	tracks, err := f.repo.getAll()
+	if err != nil {
+		return nil, err
+	}
+
+	var proto []*pb.Track
+	for _, t := range tracks {
+		proto = append(proto, t.ToProto())
+	}
+	return proto, nil
 }
 
-func (f *impl) GetArtistByAlbum(ctx context.Context, req *pb.SimpleTrackRequest) ([]*pb.Track, error) {
-	panic("not implemented")
+//artist,album
+func (f *impl) GetTracksByAlbum(albumID string) ([]*pb.Track, error) {
+	tracks, err := f.repo.getTracksByAlbum(albumID)
+	if err != nil {
+		return nil, err
+	}
+
+	var proto []*pb.Track
+	for _, t := range tracks {
+		proto = append(proto, t.ToProto())
+	}
+	return proto, nil
 }
 
-func (f *impl) GetArtistByTrack(ctx context.Context, req *pb.SimpleTrackRequest) ([]*pb.Track, error) {
-	panic("not implemented")
+func (f *impl) GetTracksByArtist(artistID string) ([]*pb.Track, error) {
+	tracks, err := f.repo.getTracksByArtist(artistID)
+	if err != nil {
+		return nil, err
+	}
+
+	var proto []*pb.Track
+	for _, t := range tracks {
+		proto = append(proto, t.ToProto())
+	}
+	return proto, nil
 }
 
 func (f *impl) CleanupAndInit() error {

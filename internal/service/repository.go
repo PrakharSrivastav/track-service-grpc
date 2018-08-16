@@ -21,11 +21,33 @@ func (r *repository) get(id string) (*model.Track, error) {
 	return &track, nil
 }
 
-func (r *repository) setupDatabase() error {
+func (r *repository) getAll() ([]*model.Track, error) {
+	var tracks []*model.Track
+	if err := r.db.Select(&tracks, "SELECT * from tracks"); err != nil {
+		return nil, err
+	}
+	return tracks, nil
+}
 
-	fmt.Println("Starting Schema")
+func (r *repository) getTracksByAlbum(albumID string) ([]*model.Track, error) {
+	var tracks []*model.Track
+	if err := r.db.Select(&tracks, "SELECT * from tracks where albumId = $1", albumID); err != nil {
+		return nil, err
+	}
+	return tracks, nil
+}
+
+func (r *repository) getTracksByArtist(artistID string) ([]*model.Track, error) {
+	var tracks []*model.Track
+	if err := r.db.Select(&tracks, "SELECT * from tracks where artistId = $1", artistID); err != nil {
+		return nil, err
+	}
+	return tracks, nil
+}
+
+func (r *repository) setupDatabase() error {
 	r.db.MustExec(schema)
-	fmt.Println("After Schema")
+
 	var tracks []model.Track
 	tracks = append(tracks, model.Track{Description: gofakeit.Sentence(5), ID: "track_id_1", AlbumID: "album_id_1", ArtistID: "artist_id_1", Name: gofakeit.Name(), Duration: gofakeit.Float64()})
 	tracks = append(tracks, model.Track{Description: gofakeit.Sentence(5), ID: "track_id_2", AlbumID: "album_id_1", ArtistID: "artist_id_1", Name: gofakeit.Name(), Duration: gofakeit.Float64()})
