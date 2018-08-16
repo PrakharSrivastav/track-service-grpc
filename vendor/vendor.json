@@ -9,6 +9,18 @@
 			"revisionTime": "2018-08-15T11:13:46Z"
 		},
 		{
+			"checksumSHA1": "WAeZsBy4oZltfjNfgS4OLNxSU2w=",
+			"path": "github.com/brianvoe/gofakeit",
+			"revision": "7615d00829f182825465ea7fc9def3bcadfbfff6",
+			"revisionTime": "2018-08-09T13:53:29Z"
+		},
+		{
+			"checksumSHA1": "QV15Q5e+hf9FCHApxxabl2Ej7j8=",
+			"path": "github.com/brianvoe/gofakeit/data",
+			"revision": "7615d00829f182825465ea7fc9def3bcadfbfff6",
+			"revisionTime": "2018-08-09T13:53:29Z"
+		},
+		{
 			"checksumSHA1": "uuLcVQXUw0CNt8Y5tsmzLWGlixI=",
 			"path": "github.com/golang/protobuf/proto",
 			"revision": "89a0c16f4dc2a70c0ed864d8ef64878f24fdaa51",
