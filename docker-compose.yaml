@@ -1,7 +1,7 @@
 version: '3'
 services:
   track:
-    image: prakharsrivastav/track:1
+    image: prakharsrivastav/track:2
     build: .
     ports:
       - '6565:6565'
