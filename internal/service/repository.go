@@ -23,8 +23,9 @@ func (r *repository) get(id string) (*model.Track, error) {
 
 func (r *repository) setupDatabase() error {
 
-	fmt.Printf("%#v\n", r.db.MustExec(schema))
-
+	fmt.Println("Starting Schema")
+	r.db.MustExec(schema)
+	fmt.Println("After Schema")
 	var tracks []model.Track
 	tracks = append(tracks, model.Track{Description: gofakeit.Sentence(5), ID: "track_id_1", AlbumID: "album_id_1", ArtistID: "artist_id_1", Name: gofakeit.Name(), Duration: gofakeit.Float64()})
 	tracks = append(tracks, model.Track{Description: gofakeit.Sentence(5), ID: "track_id_2", AlbumID: "album_id_1", ArtistID: "artist_id_1", Name: gofakeit.Name(), Duration: gofakeit.Float64()})
@@ -76,13 +77,12 @@ func (r *repository) setupDatabase() error {
 	return nil
 }
 
-var schema = `
-Drop Table if exists tracks;
+var schema = `Drop Table if exists tracks;
 CREATE TABLE tracks (
     id text,
     name text,
 	description text,
 	albumId text,
 	artistId text,
-	duration float,
+	duration float
 );`

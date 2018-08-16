@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"fmt"
 
 	pb "github.com/PrakharSrivastav/gql-grpc-defintions/go/schema"
 	"github.com/jmoiron/sqlx"
@@ -36,5 +37,6 @@ func (f *impl) GetArtistByTrack(ctx context.Context, req *pb.SimpleTrackRequest)
 }
 
 func (f *impl) CleanupAndInit() error {
+	fmt.Println("Inside CleanupAndInit")
 	return f.repo.setupDatabase()
 }
