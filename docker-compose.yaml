@@ -3,8 +3,8 @@ services:
   track-service:
     image: prakharsrivastav/track:2
     build: .
-#    ports:
-#      - '6565:6565'
+    ports:
+      - '6565:6565'
 
 networks:
   default:
