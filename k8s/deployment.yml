@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: track-service
-          image: prakharsrivastav/track:2
+          image: prakharsrivastav/track:3
           ports:
             - name: grpc
               containerPort: 6565

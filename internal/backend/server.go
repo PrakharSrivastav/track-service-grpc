@@ -28,6 +28,7 @@ type Handler interface {
 func NewGrpcServer(tracer opentracing.Tracer) *Server {
 	s := Server{}
 	s.Health = health.NewServer()
+
 	// Add interceptors for instrumentation
 	s.options = append(s.options,grpc.UnaryInterceptor(otgrpc.OpenTracingServerInterceptor(tracer, otgrpc.LogPayloads())))
 	s.options = append(s.options,grpc.StreamInterceptor(otgrpc.OpenTracingStreamServerInterceptor(tracer, otgrpc.LogPayloads())))
@@ -41,7 +42,7 @@ func NewGrpcServer(tracer opentracing.Tracer) *Server {
 
 // Start runs a server on a specific port
 func (s *Server) Start() error {
-	port := "6560"
+	port := "6565"
 	addr := fmt.Sprintf(":%s", port)
 
 	lis, err := net.Listen("tcp", addr)

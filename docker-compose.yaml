@@ -1,10 +1,10 @@
 version: '3'
 services:
   track-service:
-    image: prakharsrivastav/track:2
+    image: prakharsrivastav/track:3
     build: .
-    ports:
-      - '6565:6565'
+#    ports:
+#      - '6565:6565'
 
 networks:
   default:
