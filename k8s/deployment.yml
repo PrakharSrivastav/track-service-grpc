@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: track-service
-          image: prakharsrivastav/track:3
+          image: prakharsrivastav/track:$GIT_COMMIT
           ports:
             - name: grpc
               containerPort: 6565
